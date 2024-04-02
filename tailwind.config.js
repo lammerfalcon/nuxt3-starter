@@ -11,10 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // sans: ['Golos Text', 'serif'],
-        // sans: ['Oswald', 'serif'],
         sans: ['PT Sans', 'serif'],
-        // sans: ['Kanit', 'serif'],
       },
       colors: {
         'waikawa-gray': {

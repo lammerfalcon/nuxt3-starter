@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 // Columns
 
+import { useAuthApi } from '~/composables/api/entities/useAuthApi'
+
 const columns = [{
   key: 'id',
   label: '#',
@@ -100,9 +102,30 @@ const { data: todos, pending } = await useLazyAsyncData<{
   default: () => [],
   watch: [page, search, searchStatus, pageCount, sort],
 })
+async function test() {
+  useAuthApi().profile()
+  await useAuthApi().profile()
+  useAuthApi().profile()
+  useAuthApi().profile()
+  await useAuthApi().profile()
+  await useAuthApi().profile()
+  useAuthApi().profile()
+}
+await useAsyncData('user', () => {
+  return test()
+})
 </script>
 
 <template>
+  <UButton @click="useAuthApi().login()">
+    login
+  </UButton>
+  <UButton @click="test">
+    login
+  </UButton>
+  <UButton @click="test">
+    login
+  </UButton>
   <UCard
     class="w-full"
     :ui="{
