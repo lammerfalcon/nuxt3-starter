@@ -1,1 +1,5 @@
 /*You can write some styles here*/
+
+#__nuxt {
+    @apply min-h-screen;
+}

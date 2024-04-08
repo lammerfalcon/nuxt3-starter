@@ -2,13 +2,15 @@ import { defu } from 'defu'
 import type { FetchContext, FetchOptions, FetchResponse } from 'ofetch'
 import type { NitroFetchRequest } from 'nitropack'
 import type { UseFetchOptions } from '#app'
-import { useAuthTokens } from '~/composables/api/useAuthTokens'
 
 export function useApi<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = {}) {
+  const config = useRuntimeConfig()
+
   const isRefreshing = useState('isRefreshing', () => false)
   const refreshPromise = useState('refreshPromise', () => null)
+
   const { getTokens, setTokens, clearTokens } = useAuthTokens()
-  const config = useRuntimeConfig()
+
   const fetchOptions: FetchOptions = {
     baseURL: config.public.baseApiUrl,
     retry: 1,
@@ -17,6 +19,7 @@ export function useApi<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = 
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
+
     async onRequest({ options }) {
       const { accessToken } = getTokens()
       if (accessToken) {
@@ -26,6 +29,7 @@ export function useApi<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = 
         }
       }
     },
+
     async onResponseError(context: FetchContext & { response: FetchResponse<ResponseType> }): Promise<void> {
       if (context.response.status === 401) {
         const { refreshToken } = getTokens()

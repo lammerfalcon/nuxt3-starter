@@ -1,15 +1,15 @@
 import { useApi } from '~/composables/api/useApi'
-import { useAuthTokens } from '~/composables/api/useAuthTokens'
+import type { User } from '~/types/User'
 
 export function useAuthApi() {
   const { setTokens } = useAuthTokens()
-  async function login(credentials) {
+
+  async function login(credentials: { email: string, password: string }) {
     try {
       const response = await useApi('/auth/login', {
         method: 'POST',
         body: {
-          email: 'john@mail.com',
-          password: 'changeme',
+          ...credentials,
         },
       })
       setTokens({
@@ -21,9 +21,11 @@ export function useAuthApi() {
       console.error(error)
     }
   }
-  async function profile() {
-    return await useApi('auth/profile')
+
+  async function profile(): Promise<User> {
+    return await useApi<User>('auth/profile')
   }
+
   return {
     login,
     profile,
