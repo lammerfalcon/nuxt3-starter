@@ -9,7 +9,7 @@ const { login } = useAuthApi()
 definePageMeta({
   layout: 'login',
 })
-
+const loading = ref(false)
 const schema = object({
   email: string().email('Invalid email').required('Required'),
   password: string()
@@ -23,12 +23,16 @@ const state = reactive({
 })
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
+  loading.value = true
   try {
     await login(event.data)
     navigateTo('/')
   }
   catch (error) {
     console.error(error)
+  }
+  finally {
+    loading.value = false
   }
 }
 </script>
@@ -50,7 +54,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           <UInput v-model="state.password" type="password" />
         </UFormGroup>
 
-        <UButton type="submit">
+        <UButton :loading="loading" type="submit">
           Submit
         </UButton>
       </UForm>

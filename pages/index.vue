@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 // Columns
-import { useAuthApi } from '~/composables/api/entities/useAuthApi'
 import { useProductsApi } from '~/composables'
 
 definePageMeta({
@@ -107,16 +106,6 @@ const { data: todos, pending } = await useLazyAsyncData<{
   watch: [page, search, searchStatus, pageCount, sort],
 })
 
-async function test() {
-  useAuthApi().profile()
-  await useAuthApi().profile()
-  useAuthApi().profile()
-  useAuthApi().profile()
-  await useAuthApi().profile()
-  await useAuthApi().profile()
-  useAuthApi().profile()
-}
-
 const { data: products } = await useAsyncData('user', () => {
   return useProductsApi().list()
 })
@@ -124,16 +113,6 @@ const { data: products } = await useAsyncData('user', () => {
 
 <template>
   <div>
-    {{ products }}
-    <UButton @click="useAuthApi().login()">
-      login
-    </UButton>
-    <UButton @click="test">
-      login
-    </UButton>
-    <UButton @click="test">
-      login
-    </UButton>
     <UCard
       class="w-full"
       :ui="{
@@ -208,8 +187,7 @@ const { data: products } = await useAsyncData('user', () => {
       <UTable
         v-model="selectedRows"
         v-model:sort="sort"
-        :rows="todos"
-        :columns="columnsTable"
+        :rows="products"
         :loading="pending"
         sort-asc-icon="i-heroicons-arrow-up"
         sort-desc-icon="i-heroicons-arrow-down"

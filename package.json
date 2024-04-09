@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxt/fonts": "latest",
+    "@nuxt/image": "latest",
     "@nuxt/ui": "^2.14.2",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
