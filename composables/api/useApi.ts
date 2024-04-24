@@ -52,7 +52,7 @@ export function useApi<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = 
           }).catch((e) => {
             isRefreshing.value = false
             refreshPromise.value = null
-            throw e
+            console.error(e)
           })
         }
 

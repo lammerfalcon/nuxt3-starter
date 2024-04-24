@@ -1,9 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', '@nuxt/fonts', "@nuxt/image"],
+  modules: ['@nuxt/ui', '@nuxt/fonts', '@nuxt/image'],
   app: {
     pageTransition: { name: 'slide-right', mode: 'out-in' },
     layoutTransition: { name: 'slide-right', mode: 'out-in' },
+  },
+  ui: {
+    safelistColors: ['mantis', 'swamp'],
+  },
+  colorMode: {
+    preference: 'light',
   },
   postcss: {
     plugins: {

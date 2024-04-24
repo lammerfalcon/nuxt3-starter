@@ -5,9 +5,9 @@ import type { FormSubmitEvent } from '#ui/types'
 type Schema = InferType<typeof schema>
 
 const { login } = useAuthApi()
-
+// There can be custom layout for login page
 definePageMeta({
-  layout: 'login',
+  layout: 'default',
 })
 const loading = ref(false)
 const schema = object({
@@ -38,7 +38,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen ">
+  <div class="flex  ">
     <UCard class="max-w-md w-full backdrop-blur shadow">
       <template #header>
         <h2 class="text-2xl">

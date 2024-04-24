@@ -1,11 +1,8 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'login',
-})
 const firstVisit = useCookie('firstVisit')
 const showAlert = ref(!firstVisit.value)
 const items = [
-  { label: '1. What packages i usually use', slot: 'packages' },
+  { label: '1. Packages', slot: 'packages' },
   { label: '2. Showcases', slot: 'showcases' },
   { label: '3. Theming', slot: 'theming' },
 ]
@@ -26,7 +23,7 @@ const showcases = [
 </script>
 
 <template>
-  <UContainer class="py-10">
+  <div>
     <UCard class="flex justify-center flex-col">
       <template #header>
         <h1 class="text-4xl font-bold tracking-wide">
@@ -44,11 +41,18 @@ const showcases = [
           :items="items"
         >
           <template #theming>
-            <UAlert variant="soft" color="gray" :ui="{ title: 'text-xl', description: 'text-lg' }" title="Customizable UI kit" description="You can check Nuxt UI docs for more info" />
+            <UAlert
+              variant="soft" color="gray" :ui="{ title: 'text-xl', description: 'text-lg' }"
+              title="Customizable UI kit" description="You can check Nuxt UI docs for more info"
+            />
           </template>
           <template #showcases>
             <div class="grid grid-cols-3 gap-4">
-              <UAlert v-for="showcase in showcases" variant="soft" color="gray" :ui="{ title: 'text-xl', description: 'text-lg' }" :title="showcase.title" :description="showcase.description" />
+              <UAlert
+                v-for="showcase in showcases" variant="soft" color="gray"
+                :ui="{ title: 'text-xl', description: 'text-lg' }" :title="showcase.title"
+                :description="showcase.description"
+              />
             </div>
           </template>
           <template #packages>
@@ -76,7 +80,9 @@ const showcases = [
       <template #footer>
         <div class="flex flex-col gap-4">
           <UAlert
-            v-if="showAlert" :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'gray', variant: 'link', padded: false }" variant="soft" color="yellow" title="This site use cookies for show how cookie based JWT token works. Clicking on '          Ok, lets see what we have
+            v-if="showAlert"
+            :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'gray', variant: 'link', padded: false }"
+            variant="soft" color="yellow" title="This site use cookies for show how cookie based JWT token works. Clicking on '          Ok, lets see what we have
 ' button you agree with policy of using cookies" @close="showAlert = !showAlert"
           />
           <UButton
@@ -91,7 +97,7 @@ const showcases = [
         </div>
       </template>
     </UCard>
-  </UContainer>
+  </div>
 </template>
 
 <style scoped>

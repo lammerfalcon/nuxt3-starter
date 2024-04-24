@@ -1,6 +1,7 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const { me, isLogged } = useUser()
-  if (!isLogged.value) {
+  const excepted = ['/login', '/welcome']
+  if (!isLogged.value && !excepted.includes(to.path)) {
     try {
       await me()
     }
@@ -8,7 +9,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       console.error(error)
     }
   }
-
-  if (!isLogged.value)
+  if (!isLogged.value && !excepted.includes(to.path))
     return navigateTo('/login')
 })
