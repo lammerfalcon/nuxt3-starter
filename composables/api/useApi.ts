@@ -35,7 +35,7 @@ export function useApi<T>(url: NitroFetchRequest, options: UseFetchOptions<T> = 
         const { refreshToken } = getTokens()
         if (!isRefreshing.value && refreshToken) {
           isRefreshing.value = true
-          refreshPromise.value = $fetch('https://api.escuelajs.co/api/v1/auth/refresh-token', {
+          refreshPromise.value = $fetch<{ access_token: string, refresh_token: string }>('https://api.escuelajs.co/api/v1/auth/refresh-token', {
             method: 'POST',
             body: {
               refreshToken,

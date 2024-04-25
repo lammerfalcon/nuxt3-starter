@@ -1,75 +1,29 @@
-# Nuxt 3 Minimal Starter
+# Another Nuxt 3 starter
+## _Focused on $fetch wrapper with JWT auth and refresh token logic_
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
 
-Make sure to install the dependencies:
+### Packages
+- Nuxt UI
+- Nuxt Fonts
+- Yup for validation
+- ESlint Antfu config
 
-```bash
-# npm
-npm install
+## Features
 
-# pnpm
-pnpm install
+- $fetch wrapper with JWT auth and refresh token logic
+- Auth global middleware
+- Custom tailwind colors
+- Page Transitions example
+- MakeFile for easy rebuild project  ```make rebuild```
+- TODO: Server api calls implementation, DB + ORM
+- TODO: Docker config for production hosting
 
-# yarn
-yarn install
 
-# bun
-bun install
-```
+## As usual...
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+Node 18+
+```sh
+npm i
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
