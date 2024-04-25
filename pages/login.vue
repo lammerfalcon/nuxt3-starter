@@ -38,13 +38,14 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="flex  ">
+  <div class="">
     <UCard class="max-w-md w-full backdrop-blur shadow">
       <template #header>
         <h2 class="text-2xl">
           Login
         </h2>
       </template>
+
       <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
         <UFormGroup label="Email" name="email">
           <UInput v-model="state.email" />
@@ -59,5 +60,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UButton>
       </UForm>
     </UCard>
+    <UButton variant="link">
+      <NuxtLink to="https://fakeapi.platzi.com/en/rest/users/" external target="_blank">
+        Api docs
+      </NuxtLink>
+    </UButton>
   </div>
 </template>

@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      baseApiUrl: process.env.BASE_API_URL || 'http://localhost:3000',
+      baseApiUrl: process.env.BASE_API_URL || 'https://api.escuelajs.co/api/v1',
     },
   },
   devtools: { enabled: true },
